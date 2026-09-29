@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { @apply bg-slate-50 text-slate-900; margin: 0; min-width: 320px; }
+
+/* Shared form controls */
+input, select, textarea {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 3%);
+}
+input::placeholder, textarea::placeholder { color: #9aa5b5; }
+input:focus, select:focus, textarea:focus {
+  @apply border-indigo-400 ring-4 ring-indigo-100;
+}
+textarea { resize: vertical; }
+button { @apply rounded-xl px-4 py-2.5 font-semibold transition duration-200; }
+button:focus-visible { outline: 3px solid rgb(99 102 241 / 40%); outline-offset: 2px; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+
+/* App shell and navigation */
+aside {
+  background: linear-gradient(165deg, #111a32 0%, #0b1224 75%, #101a34 100%) !important;
+  border-right: 1px solid rgb(255 255 255 / 7%);
+  box-shadow: 8px 0 32px rgb(15 23 42 / 5%);
+}
+aside h1 { letter-spacing: -.04em; font-size: 1.35rem !important; }
+aside > p { letter-spacing: .04em; text-transform: uppercase; font-size: .65rem !important; }
+aside button, main + button { font-size: .875rem; }
+aside button { color: #c2cce0; border: 1px solid transparent; }
+aside button:hover { background: rgb(255 255 255 / 7%); color: #fff; }
+aside button.bg-blue-600 { background: linear-gradient(120deg, #5b5ce2, #4946c8) !important; color: white; box-shadow: 0 8px 20px rgb(79 70 229 / 26%); }
+header {
+  border-bottom: 1px solid #e9edf5;
+  background: rgb(255 255 255 / 92%) !important;
+  backdrop-filter: blur(16px);
+}
+header button.bg-slate-900 { background: #202b45 !important; }
+header button.bg-slate-900:hover { background: #111a32 !important; transform: translateY(-1px); }
+main { padding-top: 2rem !important; }
+main h2 { letter-spacing: -.035em; color: #172033; }
+
+/* Cards, panels and content blocks */
+main .bg-white {
+  border: 1px solid #e8edf5;
+  border-radius: 1.1rem !important;
+  box-shadow: 0 5px 22px rgb(23 32 51 / 4%), 0 1px 3px rgb(23 32 51 / 3%) !important;
+}
+main .bg-white:hover { border-color: #dce3f0; }
+main .bg-slate-50 { border-radius: .9rem; }
+main .shadow, main .shadow-sm { box-shadow: 0 5px 22px rgb(23 32 51 / 4%) !important; }
+main .bg-blue-600, main button.bg-blue-600 {
+  background: linear-gradient(120deg, #5b5ce2, #4946c8) !important;
+  color: white !important;
+  box-shadow: 0 5px 13px rgb(79 70 229 / 18%);
+}
+main button.bg-blue-600:hover { filter: brightness(1.05); transform: translateY(-1px); }
+main .bg-blue-100 { background: #eef2ff !important; border: 1px solid #dbe3ff; color: #3730a3 !important; }
+main .text-blue-600 { color: #5555d9 !important; }
+main .text-slate-500 { color: #6d788d !important; }
+main .border { border-color: #e5eaf2; }
+main .rounded { border-radius: .75rem; }
+main .rounded-xl { border-radius: 1rem; }
+main .rounded-lg { border-radius: .8rem; }
+
+/* Subtle hover feedback */
+main button, header button { transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+main button:not(:disabled):hover { transform: translateY(-1px); }
+main a { color: #5555d9; text-underline-offset: 3px; }
+
+@media (max-width: 767px) {
+  main { padding-top: 1.25rem !important; }
+  header { min-height: 64px; }
+  main .grid { gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body { background: #fff; }
+  main .bg-white { box-shadow: none !important; }
+}
